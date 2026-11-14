@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Città - Italian Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/tema.js"></script>
+</head>
+<body class="citta">
+  <div class="topbar">
+    <a class="btn" href="mappa.html" aria-label="Torna alla mappa"><span class="pref">Torna alla</span><span class="cap">mappa</span></a>
+    <a class="btn" id="bSelezione" href="selezione.html" aria-label="Torna alla selezione contenuti"><span class="pref">Torna alla</span><span class="cap"><span class="pref2">selezione </span>contenuti</span></a>
+    <a class="btn" href="index.html" aria-label="Torna alla home"><span class="pref">Torna alla</span><span class="cap">home</span></a>
+  </div>
+
+  <main class="col">
+    <header><h1 id="nome"></h1><p id="regione"></p></header>
+
+    <section class="sez" id="storia">
+      <div class="box"><h2>Storia</h2><div id="testoStoria"></div></div>
+      <div id="fotoStoria"></div>
+    </section>
+
+    <section class="sez" id="cultura">
+      <div class="box"><h2>Cultura</h2><div id="testoCultura"></div></div>
+      <div id="fotoCultura"></div>
+    </section>
+
+    <section class="sez" id="eventi">
+      <div class="box"><h2>Eventi</h2><div id="testoEventi"></div></div>
+    </section>
+
+    <div class="quiz-cta"><a class="btn" id="bQuiz" href="#">Fai il quiz</a></div>
+  </main>
+
+  <script src="dati_citta.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/citta.js"></script>
+</body>
+</html>

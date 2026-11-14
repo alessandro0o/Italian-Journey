@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scegli un argomento - Italian Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/tema.js"></script>
+</head>
+<body class="selezione">
+  <div class="topbar">
+    <a class="btn" href="mappa.html">Torna alla mappa</a>
+    <a class="btn" href="index.html">Torna alla home</a>
+  </div>
+
+  <header class="sel-titolo"><h1 id="nome">Nome città</h1><p id="regione"></p></header>
+
+  <main class="sel-grid">
+    <a class="sel-card" id="bStoria" href="#"><h2>Storia</h2><p>Le origini e le tappe principali</p></a>
+    <a class="sel-card" id="bCultura" href="#"><h2>Cultura</h2><p>Musei, palazzi e monumenti</p></a>
+    <a class="sel-card" id="bEventi" href="#"><h2>Eventi</h2><p>Feste, festival e luoghi celebri</p></a>
+    <a class="sel-card" id="bQuiz" href="#"><h2>Quiz</h2><p>Metti alla prova ciò che sai</p></a>
+  </main>
+
+  <script src="dati_citta.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    const c = richiediCitta();
+    if (c) {
+      document.title = c.nome + " - Italian Journey";
+      document.getElementById("nome").textContent = c.nome;
+      document.getElementById("regione").textContent = c.regione;
+      // Storia, cultura ed eventi portano alla stessa pagina, all'altezza della sezione giusta
+      const base = "citta.html?citta=" + c.id;
+      document.getElementById("bStoria").href = base + "#storia";
+      document.getElementById("bCultura").href = base + "#cultura";
+      document.getElementById("bEventi").href = base + "#eventi";
+      document.getElementById("bQuiz").href = "quiz.html?citta=" + c.id;
+    }
+  </script>
+</body>
+</html>

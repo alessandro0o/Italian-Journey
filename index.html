@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Italian Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/tema.js"></script>
+</head>
+<body class="home">
+  <div class="home-wrap">
+
+    <!-- Titolo, sottotitolo e cambio lingua -->
+    <header class="home-head">
+      <div class="lang" role="group" aria-label="Lingua / Language">
+        <button type="button" data-lang="en" aria-pressed="false">ENG</button>
+        <button type="button" data-lang="it" aria-pressed="true">ITA</button>
+      </div>
+      <h1>Italian Journey</h1>
+      <p data-i18n="sottotitolo">Alla scoperta dei 20 capoluoghi d'Italia</p>
+    </header>
+
+    <!-- Immagini che scorrono + globo al centro -->
+    <main class="stage">
+      <div class="rows" id="righe" role="list" aria-label="Foto dei capoluoghi italiani"></div>
+      <div class="globe-box">
+        <canvas id="globo" width="880" height="880" aria-label="Globo terrestre centrato sull'Europa: clicca per aprire la mappa dell'Italia" role="img"></canvas>
+        <a class="scopri" href="mappa.html" data-i18n="scopri">Scopri ora</a>
+      </div>
+    </main>
+
+    <!-- Istruzioni sotto al riquadro, fuori dalle immagini che scorrono -->
+    <p class="hint" data-i18n="hint">Trascina il globo per ruotarlo, cliccalo per entrare</p>
+
+    <!-- Info e contatti -->
+    <footer class="info">
+      <section>
+        <h2 data-i18n="infoTitolo">Info</h2>
+        <p data-i18n="infoTesto">Italian Journey è un progetto scolastico per esplorare storia, cultura ed eventi dei capoluoghi di regione italiani.</p>
+      </section>
+      <section>
+        <h2 data-i18n="contattiTitolo">Contatti</h2>
+        <p>Gruppo: StudioATP</p>
+        <p>Classe 4As - Liceo Scientifico G.B. Grassi</p>
+      </section>
+    </footer>
+
+  </div>
+  <script src="js/home.js"></script>
+</body>
+</html>
