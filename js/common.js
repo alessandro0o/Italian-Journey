@@ -23,7 +23,7 @@ function richiediCitta() {
 
 // Didascalia di una foto: sta nel JSON ("didascalie", per percorso del file). La foto dell'Italia è fissa.
 function didascaliaDi(src) {
-  if (src === "img/italia.jpg") return "La bandiera italiana";
+  if (src === "img/italia.jpg") return window.ijT ? window.ijT("bandiera") : "La bandiera italiana";
   const tutte = Object.values(window.DATI_CITTA || {});
   for (let i = 0; i < tutte.length; i++) {
     const t = tutte[i].didascalie && tutte[i].didascalie[src];

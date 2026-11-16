@@ -36,11 +36,16 @@ if (c) {
   document.title = c.nome + " - Italian Journey";
   document.getElementById("nome").textContent = c.nome;
   document.getElementById("regione").textContent = c.regione;
+  if (c._senzaEn) {   // città non ancora tradotta: contenuto in italiano con avviso
+    const av = document.getElementById("avviso");
+    av.textContent = ijT("avviso"); av.hidden = false;
+    ["testoStoria", "testoCultura", "testoEventi"].forEach(function (i) { document.getElementById(i).lang = "it"; });
+  }
   riempi("testoStoria", c.storia);
-  riempi("testoCultura", c.cultura, "Da visitare");
-  riempi("testoEventi", c.eventi, "Eventi e luoghi celebri");
-  document.getElementById("fotoStoria").appendChild(creaSegnaposto(c.nome + " - storia", c.foto.storia, true));
-  document.getElementById("fotoCultura").appendChild(creaSegnaposto(c.nome + " - cultura", c.foto.cultura, true));
+  riempi("testoCultura", c.cultura, ijT("daVisitare"));
+  riempi("testoEventi", c.eventi, ijT("eventiLuoghi"));
+  document.getElementById("fotoStoria").appendChild(creaSegnaposto(c.nome + " - " + ijT("storia").toLowerCase(), c.foto.storia, true));
+  document.getElementById("fotoCultura").appendChild(creaSegnaposto(c.nome + " - " + ijT("cultura").toLowerCase(), c.foto.cultura, true));
   document.getElementById("bSelezione").href = "selezione.html?citta=" + c.id;
   document.getElementById("bQuiz").href = "quiz.html?citta=" + c.id;
 }

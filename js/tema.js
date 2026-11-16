@@ -20,19 +20,28 @@
   salva(tema);
   radice.setAttribute("data-tema", tema);
 
+  // Lingua: anche lei viaggia nell'indirizzo (?lang=en). Senza parametro il sito è in italiano.
+  const lingua0 = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "it";
+  radice.lang = lingua0;
+
   // Aggiunge (o toglie) ?tema=notte a un indirizzo interno del sito. Gli altri indirizzi restano uguali.
   function conTema(href) {
     if (!href || /^(#|mailto:|tel:|javascript:|https?:|\/\/)/i.test(href)) return href;
     const m = /^([^?#]*)(\?[^#]*)?(#.*)?$/.exec(href);
     if (!m) return href;
     const q = new URLSearchParams(m[2] || "");
-    q.delete("tema");
+    q.delete("tema"); q.delete("lang");
     if (radice.getAttribute("data-tema") === "notte") q.set("tema", "notte");
+    if (radice.lang === "en") q.set("lang", "en");
     const s = q.toString();
     return m[1] + (s ? "?" + s : "") + (m[3] || "");
   }
   // per il codice che cambia pagina con location.href = ...
   window.ijUrl = conTema;
+  // aggiorna l'indirizzo della pagina corrente (senza ricaricarla), ad esempio dopo un cambio di lingua
+  window.ijAggiornaUrl = function () {
+    try { history.replaceState(history.state, "", conTema(location.pathname.split("/").pop() + location.search + location.hash)); } catch (e) {}
+  };
 
   // ogni click su un link interno porta con sé il tema scelto
   document.addEventListener("click", function (e) {
@@ -77,8 +86,7 @@
       const nuovo = radice.getAttribute("data-tema") === "notte" ? "giorno" : "notte";
       radice.setAttribute("data-tema", nuovo);
       salva(nuovo);
-      // aggiorna anche l'indirizzo della pagina corrente (senza ricaricarla)
-      try { history.replaceState(history.state, "", conTema(location.pathname.split("/").pop() + location.search + location.hash)); } catch (e) {}
+      window.ijAggiornaUrl();
       aggiorna(b);
     });
 

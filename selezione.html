@@ -11,20 +11,22 @@
 </head>
 <body class="selezione">
   <div class="topbar">
-    <a class="btn" href="mappa.html">Torna alla mappa</a>
-    <a class="btn" href="index.html">Torna alla home</a>
+    <a class="btn" href="mappa.html" data-i18n="tornaMappa">Torna alla mappa</a>
+    <a class="btn" href="index.html" data-i18n="tornaHome">Torna alla home</a>
   </div>
 
   <header class="sel-titolo"><h1 id="nome">Nome città</h1><p id="regione"></p></header>
 
   <main class="sel-grid">
-    <a class="sel-card" id="bStoria" href="#"><h2>Storia</h2><p>Le origini e le tappe principali</p></a>
-    <a class="sel-card" id="bCultura" href="#"><h2>Cultura</h2><p>Musei, palazzi e monumenti</p></a>
-    <a class="sel-card" id="bEventi" href="#"><h2>Eventi</h2><p>Feste, festival e luoghi celebri</p></a>
-    <a class="sel-card" id="bQuiz" href="#"><h2>Quiz</h2><p>Metti alla prova ciò che sai</p></a>
+    <a class="sel-card" id="bStoria" href="#"><h2 data-i18n="storia">Storia</h2><p data-i18n="storiaSub">Le origini e le tappe principali</p></a>
+    <a class="sel-card" id="bCultura" href="#"><h2 data-i18n="cultura">Cultura</h2><p data-i18n="culturaSub">Musei, palazzi e monumenti</p></a>
+    <a class="sel-card" id="bEventi" href="#"><h2 data-i18n="eventi">Eventi</h2><p data-i18n="eventiSub">Feste, festival e luoghi celebri</p></a>
+    <a class="sel-card" id="bQuiz" href="#"><h2 data-i18n="quiz">Quiz</h2><p data-i18n="quizSub">Metti alla prova ciò che sai</p></a>
   </main>
 
   <script src="dati_citta.js"></script>
+  <script src="dati_citta_en.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/common.js"></script>
   <script>
     const c = richiediCitta();

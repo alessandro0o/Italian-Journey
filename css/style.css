@@ -290,8 +290,8 @@ body.mappa{background:var(--pag-mappa)}
 }
 @media(max-width:900px){
   /* scritte abbreviate: Mappa, Contenuti, Home */
-  .topbar .pref,.topbar .pref2{display:none}
-  .topbar .cap{text-transform:capitalize}
+  .topbar .pref,.topbar .pref2,.mappa-top .pref{display:none}
+  .topbar .cap,.mappa-top .cap{text-transform:capitalize}
 }
 @media(max-width:900px){
   .mappa-top{flex-wrap:nowrap;gap:.5rem}
@@ -304,3 +304,11 @@ body.mappa{background:var(--pag-mappa)}
 .did{align-self:end;justify-self:start;position:absolute;left:.8rem;bottom:.8rem;z-index:3;max-width:calc(100% - 1.6rem);padding:.35rem .85rem;border-radius:12px;
   background:rgba(10,20,40,.74);color:#fff;font:600 .95rem/1.3 var(--sans);text-align:left;text-shadow:none;pointer-events:none}
 .tile .did{align-self:end;justify-self:start;left:.6rem;bottom:.6rem;max-width:calc(100% - 1.2rem);padding:.25rem .65rem;font-size:.8rem;border-radius:10px}
+
+/* ===== lingua: avviso "traduzione in arrivo" e pulsante ITA/ENG ===== */
+.avviso{max-width:46rem;margin:0 auto 1.2rem;padding:.8rem 1.1rem;border:2px dashed var(--box-bordo,#10203a);border-radius:14px;background:var(--box,#f8efd8);color:var(--testo);font:600 1rem var(--sans);text-align:center}
+.avviso[hidden]{display:none}
+.lang-btn{font-weight:700;letter-spacing:.04em}
+.topbar .lang-btn,.mappa-top .lang-btn{margin-left:auto}
+.topbar .lang-btn + .tema-btn,.mappa-top .lang-btn + .tema-btn{margin-left:0}
+@media (max-width:600px){.lang-btn{padding:.5rem .8rem}}

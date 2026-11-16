@@ -11,32 +11,35 @@
 </head>
 <body class="citta">
   <div class="topbar">
-    <a class="btn" href="mappa.html" aria-label="Torna alla mappa"><span class="pref">Torna alla</span><span class="cap">mappa</span></a>
-    <a class="btn" id="bSelezione" href="selezione.html" aria-label="Torna alla selezione contenuti"><span class="pref">Torna alla</span><span class="cap"><span class="pref2">selezione </span>contenuti</span></a>
-    <a class="btn" href="index.html" aria-label="Torna alla home"><span class="pref">Torna alla</span><span class="cap">home</span></a>
+    <a class="btn" href="mappa.html" data-i18n-aria="tornaMappa" aria-label="Torna alla mappa"><span class="pref" data-i18n="p_back">Torna alla</span><span class="cap" data-i18n="p_mappa">mappa</span></a>
+    <a class="btn" id="bSelezione" href="selezione.html" data-i18n-aria="tornaSel" aria-label="Torna alla selezione contenuti"><span class="pref" data-i18n="p_back">Torna alla</span><span class="cap" data-i18n-html="p_sel"><span class="pref2">selezione </span>contenuti</span></a>
+    <a class="btn" href="index.html" data-i18n-aria="tornaHome" aria-label="Torna alla home"><span class="pref" data-i18n="p_back">Torna alla</span><span class="cap" data-i18n="p_home">home</span></a>
   </div>
 
   <main class="col">
     <header><h1 id="nome"></h1><p id="regione"></p></header>
+    <p class="avviso" id="avviso" hidden></p>
 
     <section class="sez" id="storia">
-      <div class="box"><h2>Storia</h2><div id="testoStoria"></div></div>
+      <div class="box"><h2 data-i18n="storia">Storia</h2><div id="testoStoria"></div></div>
       <div id="fotoStoria"></div>
     </section>
 
     <section class="sez" id="cultura">
-      <div class="box"><h2>Cultura</h2><div id="testoCultura"></div></div>
+      <div class="box"><h2 data-i18n="cultura">Cultura</h2><div id="testoCultura"></div></div>
       <div id="fotoCultura"></div>
     </section>
 
     <section class="sez" id="eventi">
-      <div class="box"><h2>Eventi</h2><div id="testoEventi"></div></div>
+      <div class="box"><h2 data-i18n="eventi">Eventi</h2><div id="testoEventi"></div></div>
     </section>
 
-    <div class="quiz-cta"><a class="btn" id="bQuiz" href="#">Fai il quiz</a></div>
+    <div class="quiz-cta"><a class="btn" id="bQuiz" href="#" data-i18n="faiQuiz">Fai il quiz</a></div>
   </main>
 
   <script src="dati_citta.js"></script>
+  <script src="dati_citta_en.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/common.js"></script>
   <script src="js/citta.js"></script>
 </body>

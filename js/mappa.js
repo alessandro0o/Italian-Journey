@@ -24,7 +24,7 @@ function mostra(c) {
 
 // riquadro iniziale (nessuna regione selezionata): foto della bandiera italiana
 (function () {
-  const iniziale = creaSegnaposto("Italia", "img/italia.jpg");
+  const iniziale = creaSegnaposto(ijT("italia"), "img/italia.jpg");
   elFoto.className = iniziale.className;
   elFoto.replaceChildren.apply(elFoto, Array.from(iniziale.childNodes));
 })();
@@ -59,7 +59,7 @@ const esiti = document.getElementById("esiti");
 function trova(testo) {
   const q = norm(testo.trim());
   if (!q) return [];
-  return citta.filter(function (c) { return norm(c.nome).includes(q) || norm(c.regione).includes(q); }).slice(0, 6);
+  return citta.filter(function (c) { return [c.nome, c.regione, c.nomeIt, c.regioneIt].some(function (x) { return x && norm(x).includes(q); }); }).slice(0, 6);
 }
 campo.addEventListener("input", function () {
   const r = trova(campo.value);

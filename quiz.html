@@ -13,15 +13,17 @@
   <!-- Nessun link di uscita: si torna indietro solo con "Termina quiz" -->
   <main class="quiz-col">
     <header>
-      <h1>QUIZ</h1>
+      <h1 data-i18n="quiz_h">QUIZ</h1>
       <p id="sottotitolo"></p>
     </header>
 
     <form id="modulo" novalidate></form>
-    <button class="btn primary fine" id="termina" type="button">Termina quiz</button>
+    <button class="btn primary fine" id="termina" type="button" data-i18n="termina">Termina quiz</button>
   </main>
 
   <script src="dati_citta.js"></script>
+  <script src="dati_citta_en.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/common.js"></script>
   <script src="js/quiz.js"></script>
 </body>

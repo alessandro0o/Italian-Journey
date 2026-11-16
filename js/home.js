@@ -8,6 +8,9 @@ const FOTO_HOME = {
   Napoli: "img/napoli.jpg", Bari: "img/bari.jpg", Potenza: "img/potenza.jpg", Catanzaro: "img/catanzaro.jpg", Palermo: "img/palermo.jpg", Cagliari: "img/cagliari.jpg"
 };
 
+// nomi inglesi per le descrizioni (alt) delle foto
+const NOMI_EN = { Torino: "Turin", Milano: "Milan", Venezia: "Venice", Genova: "Genoa", Firenze: "Florence", Roma: "Rome", Napoli: "Naples" };
+
 function costruisciRighe() {
   const contenitore = document.getElementById("righe");
   const nomi = Object.keys(FOTO_HOME);
@@ -25,6 +28,7 @@ function costruisciRighe() {
           const img = document.createElement("img");
           img.src = FOTO_HOME[nome];
           img.alt = nome;
+          img.dataset.nome = nome;
           t.appendChild(img);
         }
         // le righe scorrevoli ripetono le stesse 20 foto: i lettori di schermo le leggono una volta sola
@@ -47,7 +51,12 @@ const TESTI = {
     hint: "Trascina il globo per ruotarlo, cliccalo per entrare",
     infoTitolo: "Info",
     infoTesto: "Italian Journey è un progetto scolastico per esplorare storia, cultura ed eventi dei capoluoghi di regione italiani.",
-    contattiTitolo: "Contatti"
+    contattiTitolo: "Contatti",
+    gruppo: "Gruppo: StudioATP",
+    classe: "Classe 4As - Liceo Scientifico G.B. Grassi",
+    righeAria: "Foto dei capoluoghi italiani",
+    globoAria: "Globo terrestre centrato sull'Europa: clicca per aprire la mappa dell'Italia",
+    titolo: "Italian Journey"
   },
   en: {
     sottotitolo: "Discover the 20 regional capitals of Italy",
@@ -55,7 +64,12 @@ const TESTI = {
     hint: "Drag the globe to rotate it, click it to enter",
     infoTitolo: "About",
     infoTesto: "Italian Journey is a school project to explore the history, culture and events of Italy's regional capitals.",
-    contattiTitolo: "Contacts"
+    contattiTitolo: "Contacts",
+    gruppo: "Group: StudioATP",
+    classe: "Class 4As - Liceo Scientifico G.B. Grassi",
+    righeAria: "Photos of Italy's regional capitals",
+    globoAria: "Globe centred on Europe: click to open the map of Italy",
+    titolo: "Italian Journey"
   }
 };
 
@@ -64,16 +78,20 @@ function impostaLingua(lang) {
   document.querySelectorAll("[data-i18n]").forEach(function (el) {
     el.textContent = TESTI[lang][el.dataset.i18n];
   });
+  document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+    el.setAttribute("aria-label", TESTI[lang][el.dataset.i18nAria]);
+  });
+  document.querySelectorAll("#righe img[data-nome]").forEach(function (img) {
+    img.alt = lang === "en" ? (NOMI_EN[img.dataset.nome] || img.dataset.nome) : img.dataset.nome;
+  });
   document.querySelectorAll(".lang button").forEach(function (b) {
     b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
   });
-  try { localStorage.setItem("ij-lingua", lang); } catch (e) {}
+  if (window.ijAggiornaUrl) window.ijAggiornaUrl();   // la lingua scelta viaggia nell'indirizzo
 }
 
 function iniziaLingua() {
-  let lang = "it";
-  try { lang = localStorage.getItem("ij-lingua") || "it"; } catch (e) {}
-  impostaLingua(lang);
+  impostaLingua(document.documentElement.lang === "en" ? "en" : "it");
   document.querySelectorAll(".lang button").forEach(function (b) {
     b.addEventListener("click", function () { impostaLingua(b.dataset.lang); });
   });
